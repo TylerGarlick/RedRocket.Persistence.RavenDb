@@ -1,6 +1,7 @@
 ﻿using FlitBit.IoC;
 using FlitBit.Wireup;
 using FlitBit.Wireup.Meta;
+using RedRocket.Persistence.Common;
 using RedRocket.Persistence.RavenDb;
 
 [assembly: WireupDependency(typeof(FlitBit.IoC.WireupThisAssembly))]

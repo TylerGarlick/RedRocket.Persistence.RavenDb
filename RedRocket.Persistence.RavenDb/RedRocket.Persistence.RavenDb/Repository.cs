@@ -1,28 +1,14 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Raven.Client;
+using RedRocket.Persistence.Common;
+using RedRocket.Utilities.Core.Validation;
 
 namespace RedRocket.Persistence.RavenDb
 {
-    public interface IReadOnlyRepository<T>
-    {
-        IQueryable<T> All();
-        IQueryable<T> Query(Func<T, bool> predicate);
-        T FindWithKey(Expression<Func<T, bool>> predicate);
-        T FindWithKey(string id);
-    }
-
-    public interface IRepository<T> : IReadOnlyRepository<T>
-    {
-        T Add(T entity);
-        T Update(T entity);
-        void Delete(T entity);
-        IDocumentSession Session { get; }
-    }
-
-    public class RavenRepository<T> : IRepository<T>
+    public class RavenRepository<T> : IRepository<T> where T : class
     {
         public RavenRepository(ICurrentDocumentSession currentDocumentSession)
         {
@@ -57,7 +43,7 @@ namespace RedRocket.Persistence.RavenDb
                 Session.SaveChanges();
                 return entity;
             }
-            throw new Utilities.Core.Validation.ValidationException(entity.GetValidationErrors());
+            throw new ObjectValidationException(entity.GetValidationErrors());
         }
 
         public T Update(T entity)
@@ -67,13 +53,18 @@ namespace RedRocket.Persistence.RavenDb
                 Session.SaveChanges();
                 return entity;
             }
-            throw new Utilities.Core.Validation.ValidationException(entity.GetValidationErrors());
+            throw new ObjectValidationException(entity.GetValidationErrors());
         }
 
         public void Delete(T entity)
         {
             Session.Delete(entity);
             Session.SaveChanges();
+        }
+
+        public IEnumerable<ObjectValidationError> Validate(T entity)
+        {
+            return entity.GetValidationErrors();
         }
 
         public IDocumentSession Session { get; private set; }
