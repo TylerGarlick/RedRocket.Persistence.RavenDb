@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Raven.Client;
+using RedRocket.Persistence.Common;
 using RedRocket.Utilities.Core.Validation;
 
 namespace RedRocket.Persistence.RavenDb
@@ -27,11 +28,6 @@ namespace RedRocket.Persistence.RavenDb
         public T FindWithKey(Expression<Func<T, bool>> predicate)
         {
             return All().SingleOrDefault(predicate);
-        }
-
-        public T FindWithKey(string id)
-        {
-            return Session.Load<T>(id);
         }
 
         public T Add(T entity)
