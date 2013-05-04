@@ -7,7 +7,7 @@ using RedRocket.Utilities.Core.Validation;
 
 namespace RedRocket.Persistence.RavenDb
 {
-    public class RavenRepository<T> : IRavenRepository<T> where T : class
+    public class RavenRepository<T> : IRepository<T> where T : class
     {
         public RavenRepository(ICurrentDocumentSession currentDocumentSession)
         {
