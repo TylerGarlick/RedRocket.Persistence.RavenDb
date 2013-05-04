@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="CurrentDocumentSession.cs" />
     <Compile Include="DocumentStoreConfiguration.cs" />
+    <Compile Include="IRavenRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RavenBootstrapper.cs" />
     <Compile Include="Repository.cs" />
