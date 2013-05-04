@@ -60,11 +60,13 @@
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\packages\RavenDB.Client.2.0.2330\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
-    <Reference Include="RedRocket.Persistence.Common">
-      <HintPath>..\packages\RedRocket.Persistence.Common.1.0.1.15\lib\net45\RedRocket.Persistence.Common.dll</HintPath>
+    <Reference Include="RedRocket.Persistence.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RedRocket.Persistence.Common.1.0.1.17\lib\net45\RedRocket.Persistence.Common.dll</HintPath>
     </Reference>
-    <Reference Include="RedRocket.Utilities.Core">
-      <HintPath>..\packages\RedRocket.Utilities.Core.1.0.0.34\lib\net45\RedRocket.Utilities.Core.dll</HintPath>
+    <Reference Include="RedRocket.Utilities.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RedRocket.Utilities.Core.1.0.0.35\lib\net45\RedRocket.Utilities.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
