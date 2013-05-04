@@ -13,6 +13,11 @@ namespace RedRocket.Persistence.RavenDb
     [ContainerRegister(typeof(IDocumentStoreConfiguration), RegistrationBehaviors.Default, ScopeBehavior = ScopeBehavior.Singleton)]
     public class DocumentStoreConfiguration : IDocumentStoreConfiguration
     {
+        public DocumentStoreConfiguration(DocumentStore documentStore)
+        {
+            DocumentStore = documentStore;
+        }
+
         public DocumentStoreConfiguration()
         {
             DocumentStore = new DocumentStore()
