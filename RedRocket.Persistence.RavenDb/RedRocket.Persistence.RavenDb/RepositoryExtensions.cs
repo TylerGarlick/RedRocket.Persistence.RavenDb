@@ -1,17 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using Raven.Client;
 using RedRocket.Persistence.Common;
 
 namespace RedRocket.Persistence.RavenDb
 {
     public static class RepositoryExtensions
     {
-        public static T FindWithKey<T>(this IRepository<T> repository,  string id) where T : class
+        public static T FindWithKey<T>(this IRepository<T> repository, string id) where T : class
         {
             var ravenRepository = repository as RavenRepository<T>;
-            if(ravenRepository == null)
+            if (ravenRepository == null)
                 throw new NullReferenceException("Raven Repository was not properly setup.  Please check your wireup settings and try again.");
-            
+
             return ravenRepository.Session.Load<T>(id);
+        }
+
+        public static T FindWithKey<T, TInclude>(this IRepository<T> repository, params string[] ids) where T : class
+        {
+            var ravenRepository = repository as RavenRepository<T>;
+            if (ravenRepository == null)
+                throw new NullReferenceException("Raven Repository was not properly setup.  Please check your wireup settings and try again.");
+
+            return ravenRepository.Session.Include<TInclude>().Load<T>(ids);
+        }
+
+        public static IEnumerable<T> All<T>(this IRepository<T> repository, Expression<Func<T, object>> path) where T : class
+        {
+            var ravenRepository = repository as RavenRepository<T>;
+            if (ravenRepository == null)
+                throw new NullReferenceException("Raven Repository was not properly setup.  Please check your wireup settings and try again.");
+
+            return ravenRepository.Session.Query<T>().Include(path);
+        }
+
+        public static IDocumentSession CurrentSession<T>(this IRepository<T> repository) where T : class
+        {
+            var ravenRepository = repository as RavenRepository<T>;
+            if (ravenRepository == null)
+                throw new NullReferenceException("Raven Repository was not properly setup.  Please check your wireup settings and try again.");
+
+            return ravenRepository.Session;
         }
     }
 }
