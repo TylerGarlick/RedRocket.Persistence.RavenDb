@@ -17,14 +17,6 @@ namespace RedRocket.Persistence.RavenDb
             return ravenRepository.Session.Load<T>(id);
         }
 
-        public static T FindWithKey<T, TInclude>(this IRepository<T> repository, params string[] ids) where T : class
-        {
-            var ravenRepository = repository as RavenRepository<T>;
-            if (ravenRepository == null)
-                throw new NullReferenceException("Raven Repository was not properly setup.  Please check your wireup settings and try again.");
-
-            return ravenRepository.Session.Include<TInclude>().Load<T>(ids);
-        }
 
         public static IEnumerable<T> All<T>(this IRepository<T> repository, Expression<Func<T, object>> path) where T : class
         {
