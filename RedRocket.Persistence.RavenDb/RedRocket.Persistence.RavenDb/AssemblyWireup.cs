@@ -5,7 +5,7 @@ using RedRocket.Persistence.Common;
 using RedRocket.Persistence.RavenDb;
 
 [assembly: WireupDependency(typeof(FlitBit.IoC.WireupThisAssembly))]
-[assembly: Wireup(typeof(AssemblyWireup))]
+[assembly: Wireup(typeof(RedRocket.Persistence.RavenDb.AssemblyWireup))]
 namespace RedRocket.Persistence.RavenDb
 {
     public sealed class AssemblyWireup : IWireupCommand
