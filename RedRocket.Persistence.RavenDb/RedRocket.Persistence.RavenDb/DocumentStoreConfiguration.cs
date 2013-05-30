@@ -20,12 +20,7 @@ namespace RedRocket.Persistence.RavenDb
 
         public DocumentStoreConfiguration()
         {
-            DocumentStore = new DocumentStore()
-                                {
-                                    Url = ConfigurationManager.AppSettings["RavenDbUrl"],
-                                    ApiKey = ConfigurationManager.AppSettings["RavenDbApiKey"],
-                                    DefaultDatabase = ConfigurationManager.AppSettings["RavenDbDatabase"]
-                                };
+            DocumentStore = new DocumentStore() { ConnectionStringName = "RavenDbConnection" };
             DocumentStore.Initialize();
             DocumentStore.Conventions.IdentityPartsSeparator = "-";
         }
