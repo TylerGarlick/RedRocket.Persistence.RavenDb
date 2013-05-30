@@ -8,7 +8,7 @@ namespace RedRocket.Persistence.RavenDb
 {
     public static class RepositoryExtensions
     {
-        public static T FindWithKey<T>(this IRepository<T> repository, string id) where T : class
+        public static T FindWithKey<T>(this IReadOnlyRepository<T> repository, string id) where T : class
         {
             var ravenRepository = repository as RavenRepository<T>;
             if (ravenRepository == null)
@@ -18,7 +18,7 @@ namespace RedRocket.Persistence.RavenDb
         }
 
 
-        public static IEnumerable<T> All<T>(this IRepository<T> repository, Expression<Func<T, object>> path) where T : class
+        public static IEnumerable<T> All<T>(this IReadOnlyRepository<T> repository, Expression<Func<T, object>> path) where T : class
         {
             var ravenRepository = repository as RavenRepository<T>;
             if (ravenRepository == null)
@@ -27,7 +27,7 @@ namespace RedRocket.Persistence.RavenDb
             return ravenRepository.Session.Query<T>().Include(path);
         }
 
-        public static IDocumentSession CurrentSession<T>(this IRepository<T> repository) where T : class
+        public static IDocumentSession CurrentSession<T>(this IReadOnlyRepository<T> repository) where T : class
         {
             var ravenRepository = repository as RavenRepository<T>;
             if (ravenRepository == null)
