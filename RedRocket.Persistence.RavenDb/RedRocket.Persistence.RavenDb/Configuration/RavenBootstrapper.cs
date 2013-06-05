@@ -2,7 +2,7 @@
 using FlitBit.IoC.Meta;
 using RedRocket.Persistence.RavenDb.Seeding;
 
-namespace RedRocket.Persistence.RavenDb
+namespace RedRocket.Persistence.RavenDb.Configuration
 {
     public interface IRavenBootstrapper
     {

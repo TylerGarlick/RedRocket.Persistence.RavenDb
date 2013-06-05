@@ -3,7 +3,7 @@ using FlitBit.Wireup;
 using FlitBit.Wireup.Meta;
 using RedRocket.Persistence.Common;
 
-[assembly: WireupDependency(typeof(FlitBit.IoC.WireupThisAssembly))]
+[assembly: WireupDependency(typeof(WireupThisAssembly))]
 [assembly: Wireup(typeof(RedRocket.Persistence.RavenDb.AssemblyWireup))]
 namespace RedRocket.Persistence.RavenDb
 {

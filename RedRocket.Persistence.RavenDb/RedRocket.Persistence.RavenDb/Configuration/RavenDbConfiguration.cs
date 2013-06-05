@@ -2,13 +2,8 @@
 using FlitBit.IoC.Meta;
 using Raven.Client.Document;
 
-namespace RedRocket.Persistence.RavenDb
+namespace RedRocket.Persistence.RavenDb.Configuration
 {
-    public interface IRavenDbConfiguration
-    {
-        DocumentStore DocumentStore { get; }
-    }
-
     [ContainerRegister(typeof(IRavenDbConfiguration), RegistrationBehaviors.Default, ScopeBehavior = ScopeBehavior.Singleton)]
     public class RavenDbConfiguration : IRavenDbConfiguration
     {

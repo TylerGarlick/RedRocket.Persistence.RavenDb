@@ -61,7 +61,9 @@ namespace RedRocket.Persistence.RavenDb
         {
             return entity.GetValidationErrors();
         }
-
+        /// <summary>
+        /// Raven Specific
+        /// </summary>
         public IDocumentSession Session { get; private set; }
     }
 }

@@ -2,6 +2,7 @@
 using FlitBit.IoC;
 using FlitBit.IoC.Meta;
 using Raven.Client;
+using RedRocket.Persistence.RavenDb.Configuration;
 
 namespace RedRocket.Persistence.RavenDb
 {
@@ -13,10 +14,10 @@ namespace RedRocket.Persistence.RavenDb
     [ContainerRegister(typeof(ICurrentSession), RegistrationBehaviors.Default, ScopeBehavior = ScopeBehavior.InstancePerScope)]
     public class CurrentSession : ICurrentSession, IDisposable
     {
-        readonly IDocumentStoreConfiguration _config;
+        readonly IRavenDbConfiguration _config;
         public IDocumentSession Session { get; private set; }
 
-        public CurrentSession(IDocumentStoreConfiguration config)
+        public CurrentSession(IRavenDbConfiguration config)
         {
             _config = config;
             Session = _config.DocumentStore.OpenSession();
