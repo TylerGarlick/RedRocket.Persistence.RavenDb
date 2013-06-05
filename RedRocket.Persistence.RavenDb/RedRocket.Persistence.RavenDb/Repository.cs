@@ -10,9 +10,9 @@ namespace RedRocket.Persistence.RavenDb
 {
     public class RavenRepository<T> : IRepository<T> where T : class
     {
-        public RavenRepository(ICurrentDocumentSession currentDocumentSession)
+        public RavenRepository(ICurrentSession currentSession)
         {
-            Session = currentDocumentSession.Session;
+            Session = currentSession.Session;
         }
 
         public IQueryable<T> All()

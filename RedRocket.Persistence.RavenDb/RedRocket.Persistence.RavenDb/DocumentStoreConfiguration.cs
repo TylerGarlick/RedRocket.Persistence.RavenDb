@@ -1,30 +1,33 @@
-﻿using System.Configuration;
-using FlitBit.IoC;
+﻿using FlitBit.IoC;
 using FlitBit.IoC.Meta;
 using Raven.Client.Document;
 
 namespace RedRocket.Persistence.RavenDb
 {
-    public interface IDocumentStoreConfiguration
+    public interface IRavenDbConfiguration
     {
         DocumentStore DocumentStore { get; }
     }
 
-    [ContainerRegister(typeof(IDocumentStoreConfiguration), RegistrationBehaviors.Default, ScopeBehavior = ScopeBehavior.Singleton)]
-    public class DocumentStoreConfiguration : IDocumentStoreConfiguration
+    [ContainerRegister(typeof(IRavenDbConfiguration), RegistrationBehaviors.Default, ScopeBehavior = ScopeBehavior.Singleton)]
+    public class RavenDbConfiguration : IRavenDbConfiguration
     {
-        public DocumentStoreConfiguration(DocumentStore documentStore)
+        public DocumentStore DocumentStore { get; private set; }
+
+        // DocumentStore = new DocumentStore
+        //                        {
+        //                            ConnectionStringName = "RavenDbConnection",
+        //                            Conventions =
+        //                                {
+        //                                    IdentityPartsSeparator = "-",
+        //                                    AllowQueriesOnId = true
+        //                                }
+        //                        };
+
+        public RavenDbConfiguration(DocumentStore documentStore)
         {
             DocumentStore = documentStore;
-        }
-
-        public DocumentStoreConfiguration()
-        {
-            DocumentStore = new DocumentStore() { ConnectionStringName = "RavenDbConnection" };
             DocumentStore.Initialize();
-            DocumentStore.Conventions.IdentityPartsSeparator = "-";
         }
-
-        public DocumentStore DocumentStore { get; private set; }
     }
 }

@@ -5,18 +5,18 @@ using Raven.Client;
 
 namespace RedRocket.Persistence.RavenDb
 {
-    public interface ICurrentDocumentSession
+    public interface ICurrentSession
     {
         IDocumentSession Session { get; }
     }
 
-    [ContainerRegister(typeof(ICurrentDocumentSession), RegistrationBehaviors.Default, ScopeBehavior = ScopeBehavior.InstancePerScope)]
-    public class CurrentDocumentSession : ICurrentDocumentSession, IDisposable
+    [ContainerRegister(typeof(ICurrentSession), RegistrationBehaviors.Default, ScopeBehavior = ScopeBehavior.InstancePerScope)]
+    public class CurrentSession : ICurrentSession, IDisposable
     {
         readonly IDocumentStoreConfiguration _config;
         public IDocumentSession Session { get; private set; }
 
-        public CurrentDocumentSession(IDocumentStoreConfiguration config)
+        public CurrentSession(IDocumentStoreConfiguration config)
         {
             _config = config;
             Session = _config.DocumentStore.OpenSession();
