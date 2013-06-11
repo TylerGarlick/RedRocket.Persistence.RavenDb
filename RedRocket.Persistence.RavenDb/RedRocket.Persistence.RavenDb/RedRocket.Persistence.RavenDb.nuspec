@@ -26,7 +26,6 @@ using this tokenized nuspec file.
     <dependencies>
       <dependency id="RavenDB.Client" />
       <dependency id="FlitBit.IoC" />
-      <dependency id="RedRocket.Persistence.Common" />
     </dependencies>
   </metadata>
   <files>
