@@ -20,9 +20,19 @@ namespace RedRocket.Persistence.RavenDb
             return Session.Query<T>();
         }
 
+        public IQueryable<T> All(Expression<Func<T, object>> path)
+        {
+            return Session.Query<T>().Include(path);
+        }
+
         public IQueryable<T> Query(Func<T, bool> predicate)
         {
             return All().Where(predicate).AsQueryable();
+        }
+
+        public T FindWithKey(string id)
+        {
+            return Session.Load<T>(id);
         }
 
         public T FindWithKey(Expression<Func<T, bool>> predicate)
