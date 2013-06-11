@@ -7,7 +7,7 @@ using RedRocket.Utilities.Core.Validation;
 
 namespace RedRocket.Persistence.RavenDb
 {
-    public class RavenRepository<T> : IRavenDbRepository<T> where T : class
+    public class RavenRepository<T> : IRavenDbReadOnlyRepository<T>, IRavenDbRepository<T> where T : class
     {
         public RavenRepository(ICurrentSession currentSession)
         {
@@ -60,6 +60,17 @@ namespace RedRocket.Persistence.RavenDb
         {
             return entity.GetValidationErrors();
         }
+
+        public T FindWithKey<T>(string id)
+        {
+            return Session.Load<T>(id);
+        }
+
+        public IEnumerable<T> All<T>(Expression<Func<T, object>> path)
+        {
+            return Session.Query<T>().Include(path);
+        }
+
         /// <summary>
         /// Raven Specific
         /// </summary>
