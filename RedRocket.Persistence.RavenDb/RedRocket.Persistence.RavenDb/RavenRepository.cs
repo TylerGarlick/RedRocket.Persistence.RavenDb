@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Raven.Client;
-using RedRocket.Persistence.Common;
 using RedRocket.Utilities.Core.Validation;
 
 namespace RedRocket.Persistence.RavenDb
 {
-    public class RavenRepository<T> : IRepository<T> where T : class
+    public class RavenRepository<T> : IRavenDbRepository<T> where T : class
     {
         public RavenRepository(ICurrentSession currentSession)
         {

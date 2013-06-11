@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Raven.Client;
+using RedRocket.Persistence.Common;
 
-namespace RedRocket.Persistence.Common
+namespace RedRocket.Persistence.RavenDb
 {
-    public partial interface IReadOnlyRepository<T>
+    public partial interface IRavenDbReadOnlyRepository<T> : IReadOnlyRepository<T> where T : class
     {
         T FindWithKey<T>(string id);
         IEnumerable<T> All<T>(Expression<Func<T, object>> path);
         IDocumentSession Session { get; }
+    }
+
+    public interface IRavenDbRepository<T> : IRepository<T> where T : class
+    {
+        
     }
 }

@@ -12,12 +12,12 @@ namespace RedRocket.Persistence.RavenDb
         public void Execute(IWireupCoordinator coordinator)
         {
             Container.Root
-                     .ForGenericType(typeof(IReadOnlyRepository<>))
+                     .ForGenericType(typeof(IRavenDbReadOnlyRepository<>))
                      .Register(typeof(RavenRepository<>))
                      .End();
 
             Container.Root
-                     .ForGenericType(typeof(IRepository<>))
+                     .ForGenericType(typeof(IRavenDbRepository<>))
                      .Register(typeof(RavenRepository<>))
                      .ResolveAnInstancePerScope()
                      .End();
