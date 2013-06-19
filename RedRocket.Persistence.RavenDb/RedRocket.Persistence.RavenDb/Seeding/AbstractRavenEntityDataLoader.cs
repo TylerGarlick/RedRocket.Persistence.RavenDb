@@ -1,6 +1,5 @@
 ﻿using FlitBit.Core;
 using FlitBit.IoC;
-using RedRocket.Persistence.Common;
 
 namespace RedRocket.Persistence.RavenDb.Seeding
 {

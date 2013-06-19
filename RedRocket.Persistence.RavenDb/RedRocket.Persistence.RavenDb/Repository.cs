@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Raven.Client;
-using RedRocket.Persistence.Common;
 using RedRocket.Utilities.Core.Validation;
 
 namespace RedRocket.Persistence.RavenDb
 {
-    public class RavenRepository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
-        public RavenRepository(ICurrentSession currentSession)
+        public Repository(ICurrentSession currentSession)
         {
             Session = currentSession.Session;
         }
@@ -61,6 +60,17 @@ namespace RedRocket.Persistence.RavenDb
         {
             return entity.GetValidationErrors();
         }
+
+        public T FindWithKey<T>(string id)
+        {
+            return Session.Load<T>(id);
+        }
+
+        public IEnumerable<T> All<T>(Expression<Func<T, object>> path)
+        {
+            return Session.Query<T>().Include(path);
+        }
+
         /// <summary>
         /// Raven Specific
         /// </summary>
