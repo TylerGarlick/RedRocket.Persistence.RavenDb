@@ -22,11 +22,11 @@ using this tokenized nuspec file.
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>RavenDb implementation of the RedRocket Persistence Framework</description>
     <projectUrl>https://github.com/TylerGarlick/RedRocket.Persistence.RavenDb</projectUrl>
-    <tags>RedRocket Framework, RedRocket, Entity Framework, Generic Repository, Persistence, FlitBit</tags>
+    <tags>RedRocket Framework, RedRocket, Entity Framework, RavenDb, Generic Repository, Persistence, FlitBit</tags>
     <dependencies>
       <dependency id="RavenDB.Client" />
       <dependency id="FlitBit.IoC" />
-      <dependency id="RedRocket.Persistence.Common" />
+      <dependency id="RedRocket.Utilities.Core"/>
     </dependencies>
   </metadata>
   <files>
