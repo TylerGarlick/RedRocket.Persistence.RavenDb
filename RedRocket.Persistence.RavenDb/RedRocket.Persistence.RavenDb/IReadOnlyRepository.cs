@@ -12,9 +12,8 @@ namespace RedRocket.Persistence.RavenDb
         IQueryable<T> All();
         IQueryable<T> Query(Func<T, bool> predicate);
         T FindWithKey(Expression<Func<T, bool>> predicate);
-
-        T FindWithKey<T>(string id);
-        IEnumerable<T> All<T>(Expression<Func<T, object>> path);
+        T FindWithKey(string id);
+        IEnumerable<T> All(Expression<Func<T, object>> path);
         IDocumentSession Session { get; }
     }
 

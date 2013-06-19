@@ -37,15 +37,16 @@ namespace RedRocket.Persistence.RavenDb.Testing
             return All().FirstOrDefault(predicate);
         }
 
-        public T1 FindWithKey<T1>(string id)
+        public T FindWithKey(string id)
         {
-            throw new NotImplementedException();
+            return All().FirstOrDefault();
         }
 
-        public IEnumerable<T1> All<T1>(Expression<Func<T1, object>> path)
+        public IEnumerable<T> All(Expression<Func<T, object>> path)
         {
-            throw new NotImplementedException();
+            return All();
         }
+
 
         public IDocumentSession Session { get; private set; }
 
