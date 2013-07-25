@@ -25,7 +25,7 @@ using this tokenized nuspec file.
     <tags>RedRocket Framework, RedRocket, Entity Framework, Generic Repository, Persistence, FlitBit</tags>
     <dependencies>
       <dependency id="RavenDB.Client" />
-      <dependency id="RedRocket.FlitBit.IoC" />
+      <dependency id="FlitBit.IoC" />
     </dependencies>
   </metadata>
   <files>
