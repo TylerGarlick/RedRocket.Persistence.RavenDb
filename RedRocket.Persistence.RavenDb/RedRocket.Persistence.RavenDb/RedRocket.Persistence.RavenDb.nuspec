@@ -18,14 +18,14 @@ using this tokenized nuspec file.
     <authors>Tyler Garlick</authors>
     <owners>RedRocket, Tyler Garlick</owners>
     <id>RedRocket.Persistence.RavenDb</id>
-    <title>RedRocket Persistence Framework | RavenDb</title>
+    <title>RedRocket | Persistence | RavenDb</title>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>RavenDb implementation of the RedRocket Persistence Framework</description>
     <projectUrl>https://github.com/TylerGarlick/RedRocket.Persistence.RavenDb</projectUrl>
     <tags>RedRocket Framework, RedRocket, Entity Framework, Generic Repository, Persistence, FlitBit</tags>
     <dependencies>
       <dependency id="RavenDB.Client" />
-      <dependency id="FlitBit.IoC" />
+      <dependency id="RedRocket.FlitBit.IoC" />
     </dependencies>
   </metadata>
   <files>
